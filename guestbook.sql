@@ -63,6 +63,26 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
+
+DELIMITER $$
+
+CREATE
+ TRIGGER meja_after_update AFTER INSERT
+ ON events 
+ FOR EACH ROW BEGIN
+    DECLARE x INT;
+                  DECLARE y INT;
+    declare x_counter int unsigned default 0;
+                  declare y_counter int unsigned default 0;
+                  SET x = jumlah_m;
+                  SET y = jumlah_k;
+  while  x_counter < x do
+    INSERT INTO meja (ID_E, ID_M) VALUES (ID_E,x_counter+1);
+    set x_counter=x_counter+1;
+  end while;
+ END$$
+
+
 INSERT INTO `events` (`ID_E`, `nama_e`, `lokasi_e`, `tanggal_e`, `waktu_e`, `jumlah_m`, `jumlah_k`) VALUES
 (1, 'makan', 'tangerang', '2019-09-03', '16:05:00', 5, 1);
 
