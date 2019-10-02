@@ -23,9 +23,7 @@
             "nama" => $pelanggan->nama,
             "nomorhp" => $pelanggan->nomorhp,
             "email" => $pelanggan->email,
-            "kehadiran" => $pelanggan->kehadiran,
-            "ID_E" => $pelanggan->ID_E,
-            "ID_K" => $pelanggan->ID_K
+            "kehadiran" => $pelanggan->kehadiran
         );
      
         http_response_code(200);

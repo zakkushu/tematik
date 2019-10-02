@@ -24,7 +24,7 @@
 		}
 
 		function create(){
-			$query = "INSERT INTO " . $this->table_name . " SET nama=:nama, nomorhp=:nomorhp, email=:email, kehadiran=:kehadiran, ID_E=:ID_E, ID_K=:ID_K";
+			$query = "INSERT INTO " . $this->table_name . " SET nama=:nama, nomorhp=:nomorhp, email=:email, kehadiran=:kehadiran";
 	    
 	        $stmt = $this->conn->prepare($query);
 	    
@@ -32,16 +32,12 @@
 	        $this->nomorhp=htmlspecialchars(strip_tags($this->nomorhp));
 	        $this->email=htmlspecialchars(strip_tags($this->email));
 	        $this->kehadiran=htmlspecialchars(strip_tags($this->kehadiran));
-	        $this->ID_E=htmlspecialchars(strip_tags($this->ID_E));
-	        $this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
 
 	    
 	        $stmt->bindParam(":nama", $this->nama);
 	        $stmt->bindParam(":nomorhp", $this->nomorhp);
 	        $stmt->bindParam(":email", $this->email);
 	        $stmt->bindParam(":kehadiran", $this->kehadiran);
-	        $stmt->bindParam(":ID_E", $this->ID_E);
-	        $stmt->bindParam(":ID_K", $this->ID_K);
 
 	        if($stmt->execute()){
 	            return true;
@@ -65,13 +61,11 @@
 	        $this->nomorhp = $row['nomorhp'];
 	        $this->email = $row['email'];
 	        $this->kehadiran = $row['kehadiran'];
-	        $this->ID_E = $row['ID_E'];
-	        $this->ID_K = $row['ID_K'];
 	    }
 
 	     function update(){
 
-	        $query = "UPDATE " . $this->table_name . " SET nama=:nama, nomorhp=:nomorhp, email=:email, kehadiran=:kehadiran, ID_E=:ID_E, ID_K=:ID_K WHERE ID_P = :ID_P";
+	        $query = "UPDATE " . $this->table_name . " SET nama=:nama, nomorhp=:nomorhp, email=:email, kehadiran=:kehadiran WHERE ID_P = :ID_P";
 
 	        $stmt = $this->conn->prepare($query);
 
@@ -79,16 +73,12 @@
 	        $this->nomorhp=htmlspecialchars(strip_tags($this->nomorhp));
 	        $this->email=htmlspecialchars(strip_tags($this->email));
 	        $this->kehadiran=htmlspecialchars(strip_tags($this->kehadiran));
-	        $this->ID_E=htmlspecialchars(strip_tags($this->ID_E));
-	        $this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
 
 	    	$stmt->bindParam(":ID_P", $this->ID_P);
 	        $stmt->bindParam(":nama", $this->nama);
 	        $stmt->bindParam(":nomorhp", $this->nomorhp);
 	        $stmt->bindParam(":email", $this->email);
 	        $stmt->bindParam(":kehadiran", $this->kehadiran);
-	        $stmt->bindParam(":ID_E", $this->ID_E);
-	        $stmt->bindParam(":ID_K", $this->ID_K);
 
 	        if($stmt->execute()){
 	            return true;

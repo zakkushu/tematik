@@ -21,8 +21,6 @@
 	$pelanggan->nomorhp = $data->nomorhp;
 	$pelanggan->email = $data->email;
 	$pelanggan->kehadiran = $data->kehadiran;
-	$pelanggan->ID_E = $data->ID_E;
-	$pelanggan->ID_K = $data->ID_K;
 
 
 	if($pelanggan->update()){

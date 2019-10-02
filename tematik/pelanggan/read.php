@@ -28,9 +28,7 @@ if($num>0){
             "nama" => $nama,
             "nomorhp" => $nomorhp,
             "email" => $email,
-            "kehadiran" => $kehadiran,
-            "ID_E" => $ID_E,
-            "ID_K" => $ID_K
+            "kehadiran" => $kehadiran
         );
  
         array_push($pelanggan_arr["records"], $pelanggan_item);

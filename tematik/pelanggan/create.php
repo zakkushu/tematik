@@ -18,15 +18,13 @@ $data = json_decode(file_get_contents("php://input"));
  
 
 if(
-    !empty($data->nama) && !empty($data->nomorhp) && !empty($data->email) && !empty($data->kehadiran) && !empty($data->ID_E) && !empty($data->ID_K)
+    !empty($data->nama) && !empty($data->nomorhp) && !empty($data->email) && !empty($data->kehadiran)
 ){  
  
     $pelanggan->nama = $data->nama;
     $pelanggan->nomorhp = $data->nomorhp;
     $pelanggan->email = $data->email;
     $pelanggan->kehadiran = $data->kehadiran;
-    $pelanggan->ID_E = $data->ID_E;
-    $pelanggan->ID_K = $data->ID_K;
  
     if($pelanggan->create()){
  
