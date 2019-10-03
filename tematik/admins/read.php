@@ -57,8 +57,8 @@ if($num>0){
 // no products found will be here
 else{
  
-    // set response code - 404 Not found
-    http_response_code(404);
+    // set response code - 201 Not found
+    http_response_code(201);
  
     // tell the user no products found
     echo json_encode(

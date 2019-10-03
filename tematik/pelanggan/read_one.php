@@ -22,8 +22,7 @@
             "ID_P" =>  $pelanggan->ID_P,
             "nama" => $pelanggan->nama,
             "nomorhp" => $pelanggan->nomorhp,
-            "email" => $pelanggan->email,
-            "kehadiran" => $pelanggan->kehadiran
+            "email" => $pelanggan->email
         );
      
         http_response_code(200);
@@ -31,7 +30,7 @@
     }
      
     else{
-        http_response_code(404);
+        http_response_code(201);
         echo json_encode(array("message" => "pelanggan does not exist."));
     }
 ?>

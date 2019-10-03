@@ -28,6 +28,7 @@ if($admin->nama!=null){
     $admin_arr = array(
         "ID_A" =>  $admin->ID_A,
         "nama" => $admin->nama,
+        "email" => $admin->email,
         "password" => $admin->password
  
     );
@@ -40,8 +41,8 @@ if($admin->nama!=null){
 }
  
 else{
-    // set response code - 404 Not found
-    http_response_code(404);
+    // set response code - 201 Not found
+    http_response_code(201);
  
     // tell the user admin does not exist
     echo json_encode(array("message" => "admin does not exist."));

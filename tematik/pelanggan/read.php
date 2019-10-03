@@ -27,8 +27,7 @@ if($num>0){
             "ID_P" => $ID_P,
             "nama" => $nama,
             "nomorhp" => $nomorhp,
-            "email" => $email,
-            "kehadiran" => $kehadiran
+            "email" => $email
         );
  
         array_push($pelanggan_arr["records"], $pelanggan_item);
@@ -41,7 +40,7 @@ if($num>0){
  
 else{
  
-    http_response_code(404);
+    http_response_code(201);
  
     echo json_encode(
         array("message" => "No pelanggan found.")

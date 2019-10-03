@@ -18,9 +18,9 @@
 	$pelanggan->ID_P = $data->ID_P;
 
 	$pelanggan->nama = $data->nama;
+	$pelanggan->nickname = $data->nickname;
 	$pelanggan->nomorhp = $data->nomorhp;
 	$pelanggan->email = $data->email;
-	$pelanggan->kehadiran = $data->kehadiran;
 
 
 	if($pelanggan->update()){
