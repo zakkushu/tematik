@@ -30,7 +30,8 @@ if($num>0){
             "tanggal_e" => $tanggal_e,
             "waktu_e" => $waktu_e,
             "jumlah_m" => $jumlah_m,
-            "jumlah_k" => $jumlah_k
+            "jumlah_k" => $jumlah_k,
+            "note" => $note
         );
  
         array_push($events_arr["records"], $events_item);

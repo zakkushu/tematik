@@ -25,7 +25,8 @@
             "tanggal_e" => $events->tanggal_e,
             "waktu_e" => $events->waktu_e,
             "jumlah_m" => $events->jumlah_m,
-            "jumlah_k" => $events->jumlah_k
+            "jumlah_k" => $events->jumlah_k,
+            "note" => $events->note
      
         );
      

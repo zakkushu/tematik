@@ -26,6 +26,7 @@
         $events->waktu_e = $data->waktu_e;
         $events->jumlah_m = $data->jumlah_m;
         $events->jumlah_k = $data->jumlah_k;
+        $events->note = $data->note;
      
         if($events->create()){
      

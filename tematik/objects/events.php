@@ -10,6 +10,7 @@
 		public $waktu_e;
 		public $jumlah_m;
 		public $jumlah_k;
+		public $note;
 
 		public function __construct($db){
 			$this->conn = $db;
@@ -24,7 +25,7 @@
 		}
 
 		function create(){
-			 $query = "INSERT INTO " . $this->table_name . " SET nama_e=:nama_e, lokasi_e=:lokasi_e, tanggal_e=:tanggal_e, waktu_e=:waktu_e, jumlah_m=:jumlah_m, jumlah_k=:jumlah_k";
+			 $query = "INSERT INTO " . $this->table_name . " SET nama_e=:nama_e, lokasi_e=:lokasi_e, tanggal_e=:tanggal_e, waktu_e=:waktu_e, jumlah_m=:jumlah_m, jumlah_k=:jumlah_k, note=:note";
 	    
 	        $stmt = $this->conn->prepare($query);
 	    
@@ -34,6 +35,7 @@
 	        $this->waktu_e=htmlspecialchars(strip_tags($this->waktu_e));
 	        $this->jumlah_m=htmlspecialchars(strip_tags($this->jumlah_m));
 	        $this->jumlah_k=htmlspecialchars(strip_tags($this->jumlah_k));
+	        $this->note=htmlspecialchars(strip_tags($this->note));
 	    
 	        $stmt->bindParam(":nama_e", $this->nama_e);
 	        $stmt->bindParam(":lokasi_e", $this->lokasi_e);
@@ -41,6 +43,7 @@
 	        $stmt->bindParam(":waktu_e", $this->waktu_e);
 	        $stmt->bindParam(":jumlah_m", $this->jumlah_m);
 	        $stmt->bindParam(":jumlah_k", $this->jumlah_k);
+	        $stmt->bindParam(":note", $this->note);
 	        
 
 	        if($stmt->execute()){
@@ -67,6 +70,7 @@
 	        $this->waktu_e = $row['waktu_e'];
 	        $this->jumlah_m = $row['jumlah_m'];
 	        $this->jumlah_k = $row['jumlah_k'];
+	        $this->note = $row['note'];
 	    }
 
 	     function update(){
@@ -81,6 +85,7 @@
 	        $this->waktu_e=htmlspecialchars(strip_tags($this->waktu_e));
 	        $this->jumlah_m=htmlspecialchars(strip_tags($this->jumlah_m));
 	        $this->jumlah_k=htmlspecialchars(strip_tags($this->jumlah_k));
+			$this->note=htmlspecialchars(strip_tags($this->note));
 	    
 	    	$stmt->bindParam(":ID_E", $this->ID_E);
 	        $stmt->bindParam(":nama_e", $this->nama_e);
@@ -89,6 +94,7 @@
 	        $stmt->bindParam(":waktu_e", $this->waktu_e);
 	        $stmt->bindParam(":jumlah_m", $this->jumlah_m);
 	        $stmt->bindParam(":jumlah_k", $this->jumlah_k);
+	        $stmt->bindParam(":note", $this->jumlah_k);
 
 	        if($stmt->execute()){
 	            return true;
