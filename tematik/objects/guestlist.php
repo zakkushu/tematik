@@ -12,7 +12,7 @@
 		}
 
 		function read(){
-			$query = "SELECT nama_e, nama from guestlist g inner join pelanggan p on p.iD_P = g.ID_P inner join events e on g.ID_E = e.ID_E";
+			$query = "SELECT * FROM tamu ";
 
 			$stmt = $this->conn->prepare($query);
 	        $stmt->execute();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 03, 2019 at 01:43 AM
+-- Generation Time: Oct 24, 2019 at 07:03 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.11
 
@@ -138,22 +138,16 @@ INSERT INTO `kursi` (`ID_M`, `ID_K`) VALUES
 
 CREATE TABLE `meja` (
   `ID_E` int(10) DEFAULT NULL,
-  `ID_M` int(10) NOT NULL
+  `ID_M` int(10) NOT NULL,
+  `tname` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `meja`
 --
 
-INSERT INTO `meja` (`ID_E`, `ID_M`) VALUES
-(1, 1),
-(1, 2),
-(2, 3),
-(6, 1),
-(6, 2),
-(6, 3),
-(6, 4),
-(6, 5);
+INSERT INTO `meja` (`ID_E`, `ID_M`, `tname`) VALUES
+(1, 1, 'sigma');
 
 -- --------------------------------------------------------
 
@@ -174,7 +168,30 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`ID_P`, `nama`, `nickname`, `nomorhp`, `email`) VALUES
-(1, 'Andi', 'Aa', '0812312312', 'andi@gmail.com');
+(1, 'Andi', 'Aa', '0812312312', 'andi@gmail.com'),
+(2, 'Budi', 'Bud', '2131221', 'afafs@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `tamu`
+-- (See below for the actual view)
+--
+CREATE TABLE `tamu` (
+`nama_e` varchar(100)
+,`nama` varchar(100)
+,`tname` varchar(100)
+,`ID_K` int(10)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `tamu`
+--
+DROP TABLE IF EXISTS `tamu`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tamu`  AS  select `e`.`nama_e` AS `nama_e`,`p`.`nama` AS `nama`,`m`.`tname` AS `tname`,`k`.`ID_K` AS `ID_K` from ((((`guestlist` `g` join `pelanggan` `p` on((`p`.`ID_P` = `g`.`ID_P`))) join `events` `e` on((`g`.`ID_E` = `e`.`ID_E`))) join `meja` `m` on((`m`.`ID_E` = `e`.`ID_E`))) join `kursi` `k` on((`k`.`ID_K` = `g`.`ID_K`))) ;
 
 --
 -- Indexes for dumped tables
@@ -218,7 +235,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `ID_P` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_P` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
