@@ -6,37 +6,26 @@
 	header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 	include_once '../config/database.php';
-	include_once '../objects/pelanggan.php';
+	include_once '../objects/kursi.php';
 
 	$database = new Database();
 	$db = $database->getConnection();
 
-	$pelanggan = new pelanggan($db);
+	$kursi = new kursi($db);
 
 	$data = json_decode(file_get_contents("php://input"));
 
+	$kursi->ID_K = $data->ID_K;
 
-	$pelanggan->ID_P = $data->ID_P;
-	$pelanggan->nama = $data->nama;
-	$pelanggan->nickname = $data->nickname;
-	$pelanggan->nomorhp = $data->nomorhp;
-	$pelanggan->email = $data->email;
-	$pelanggan->createdat = $data->createdat;
-	$pelanggan->createdby = $data->createdby;
-	$pelanggan->modifiedby = $data->modifiedby;
-	
-
-	if($pelanggan->update()){
+	if($kursi->delete()){
 
 		http_response_code(200);
-
-		echo json_encode(array("message" => "pelanggan was updated."));
+		echo json_encode(array("message" => "kursi was deleted."));
 	}
 
 	else{
 
 		http_response_code(503);
-
-		echo json_encode(array("message" => "Unable to update pelanggan."));
+		echo json_encode(array("message" => "Unable to delete kursi."));
 	}
 ?>

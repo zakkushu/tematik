@@ -18,15 +18,16 @@
      
 
     if(
-        !empty($data->nama_e) && !empty($data->lokasi_e) && !empty($data->tanggal_e) && !empty($data->waktu_e) && !empty($data->jumlah_m) && !empty($data->jumlah_k)){
+        !empty($data->nama_e) && !empty($data->lokasi_e) && !empty($data->tanggal_e) && !empty($data->waktu_e) && !empty($data->createdat) && !empty($data->createdby) && !empty($data->modifiedby)){
      
         $events->nama_e = $data->nama_e;
         $events->lokasi_e = $data->lokasi_e;
         $events->tanggal_e = $data->tanggal_e;
         $events->waktu_e = $data->waktu_e;
         $events->jumlah_m = $data->jumlah_m;
-        $events->jumlah_k = $data->jumlah_k;
-        $events->note = $data->note;
+        $events->createdat = $data->createat;
+        $events->createdby = $data->createdby;
+        $events->modifiedby = $data->modifiedby;
      
         if($events->create()){
      

@@ -23,6 +23,9 @@
 	$events->waktu_e = $data->waktu_e;
 	$events->jumlah_m = $data->jumlah_m;
 	$events->jumlah_k = $data->jumlah_k;
+	$events->createdat = $data->createdat;
+	$events->createdby = $data->createdby;
+	$events->modifiedby = $data->modifiedby;
 
 
 	if($events->update()){

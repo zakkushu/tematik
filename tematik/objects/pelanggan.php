@@ -8,6 +8,9 @@
 		public $nickname;
 		public $nomorhp;
 		public $email;
+		public $createdby;
+		public $createdat;
+		public $modifiedby;
 
 		public function __construct($db){
 			$this->conn = $db;
@@ -22,7 +25,7 @@
 		}
 
 		function create(){
-			$query = "INSERT INTO " . $this->table_name . " SET nama=:nama, nickname=:nickname, nomorhp=:nomorhp, email=:email";
+			$query = "INSERT INTO " . $this->table_name . " SET nama=:nama, nickname=:nickname, nomorhp=:nomorhp, email=:email, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby";
 	    
 	        $stmt = $this->conn->prepare($query);
 	    
@@ -30,12 +33,19 @@
 	        $this->nickname=htmlspecialchars(strip_tags($this->nickname));
 	        $this->nomorhp=htmlspecialchars(strip_tags($this->nomorhp));
 	        $this->email=htmlspecialchars(strip_tags($this->email));
+			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
+			$this->createdat=htmlspecialchars(strip_tags($this->createdat));
+			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
 	    
 	        $stmt->bindParam(":nama", $this->nama);
 	        $stmt->bindParam(":nickname", $this->nickname);
 	        $stmt->bindParam(":nomorhp", $this->nomorhp);
-	        $stmt->bindParam(":email", $this->email);
+			$stmt->bindParam(":email", $this->email);
+			$stmt->bindParam(":createdby", $this->createdby);
+			$stmt->bindParam(":createdat", $this->createdat);
+			$stmt->bindParam(":modifiedby", $this->modifiedby);
+
 
 	        if($stmt->execute()){
 	            return true;
@@ -63,20 +73,27 @@
 
 	     function update(){
 
-	        $query = "UPDATE " . $this->table_name . " SET nama=:nama, nickname=:nickname, nomorhp=:nomorhp, email=:email WHERE ID_P = :ID_P";
+	        $query = "UPDATE " . $this->table_name . " SET ID_P=:ID_P, nama=:nama, nickname=:nickname, nomorhp=:nomorhp, email=:email, createdat=:createdat, createdby=:createdby, modifiedby=:modifiedby WHERE ID_P =:ID_P";
 
 	        $stmt = $this->conn->prepare($query);
 
-	      $this->nama=htmlspecialchars(strip_tags($this->nama));
+			$this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
+	      	$this->nama=htmlspecialchars(strip_tags($this->nama));
+			$this->nickname=htmlspecialchars(strip_tags($this->nickname));
 	        $this->nomorhp=htmlspecialchars(strip_tags($this->nomorhp));
-	        $this->nickname=htmlspecialchars(strip_tags($this->nickname));
-	        $this->email=htmlspecialchars(strip_tags($this->email));
+			$this->email=htmlspecialchars(strip_tags($this->email));
+			$this->createdat=htmlspecialchars(strip_tags($this->createdat));
+			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
+			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
 	    	$stmt->bindParam(":ID_P", $this->ID_P);
 	        $stmt->bindParam(":nama", $this->nama);
 	        $stmt->bindParam(":nickname", $this->nickname);
 	        $stmt->bindParam(":nomorhp", $this->nomorhp);
-	        $stmt->bindParam(":email", $this->email);
+			$stmt->bindParam(":email", $this->email);
+			$stmt->bindParam(":createdat", $this->createdat);
+			$stmt->bindParam(":createdby", $this->createdby);
+			$stmt->bindParam(":modifiedby", $this->modifiedby);
 
 	        if($stmt->execute()){
 	            return true;

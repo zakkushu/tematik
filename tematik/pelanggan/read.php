@@ -27,7 +27,10 @@ if($num>0){
             "ID_P" => $ID_P,
             "nama" => $nama,
             "nomorhp" => $nomorhp,
-            "email" => $email
+            "email" => $email,
+            "createdat" => $pelanggan->createdat,
+            "createdby" => $pelanggan->createdby,
+            "modifiedby" => $pelanggan->modifiedby
         );
  
         array_push($pelanggan_arr["records"], $pelanggan_item);

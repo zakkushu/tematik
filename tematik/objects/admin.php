@@ -10,6 +10,9 @@ class Admin{
     public $nama;
     public $email;
     public $password;
+    public $createdby;
+    public $createdat;
+    public $modifiedby;
  
     // constructor with $db as database connection
     public function __construct($db){
@@ -38,7 +41,7 @@ class Admin{
     function create(){
     
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " SET nama=:nama, email=:email, password=:password";
+        $query = "INSERT INTO " . $this->table_name . " SET nama=:nama, email=:email, password=:password, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -47,11 +50,18 @@ class Admin{
         $this->nama=htmlspecialchars(strip_tags($this->nama));
         $this->email=htmlspecialchars(strip_tags($this->email));
         $this->password=htmlspecialchars(strip_tags($this->password));
+        $this->createdby=htmlspecialchars(strip_tags($this->createdby));
+        $this->createdat=htmlspecialchars(strip_tags($this->createdat));
+        $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
     
         // bind values
         $stmt->bindParam(":nama", $this->nama);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":createdby", $this->createdby);
+        $stmt->bindParam(":createdat", $this->createdat);
+        $stmt->bindParam(":modifiedby", $this->modifiedby);
+
         // execute query
         if($stmt->execute()){
             return true;
@@ -89,7 +99,7 @@ class Admin{
     function update(){
 
         // update query
-        $query = "UPDATE " . $this->table_name . " SET nama = :nama, email = :email, password = :password WHERE ID_A = :ID_A";
+        $query = "UPDATE " . $this->table_name . " SET nama = :nama, email = :email, password = :password, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby WHERE ID_A = :ID_A";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -104,6 +114,9 @@ class Admin{
         $stmt->bindParam(":nama", $this->nama);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":createdby", $this->createdby);
+        $stmt->bindParam(":createdat", $this->createdat);
+        $stmt->bindParam(":modifiedby", $this->modifiedby);
 
         // execute the query
         if($stmt->execute()){

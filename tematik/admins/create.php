@@ -24,13 +24,14 @@ $data = json_decode(file_get_contents("php://input"));
 //echo json_encode(array("input" => $data->nama));
 
 if(
-    !empty($data->nama) && !empty($data->email) && !empty($data->password)
+    !empty($data->nama) && !empty($data->email) && !empty($data->password) && !empty($data->createdat) && !empty($data->createdby) && !empty($data->modifiedby)
 ){
  
     // set product property values
     $admin->nama = $data->nama;
     $admin->email = $data->email;
     $admin->password = $data->password;
+
  
     // create the product
     if($admin->create()){

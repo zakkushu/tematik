@@ -30,8 +30,9 @@ if($num>0){
             "tanggal_e" => $tanggal_e,
             "waktu_e" => $waktu_e,
             "jumlah_m" => $jumlah_m,
-            "jumlah_k" => $jumlah_k,
-            "note" => $note
+            "createdat" => $createdat,
+            "createdby" => $createdby,
+            "modifiedby" => $modifiedby
         );
  
         array_push($events_arr["records"], $events_item);

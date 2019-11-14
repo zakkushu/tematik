@@ -6,37 +6,34 @@
 	header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 	include_once '../config/database.php';
-	include_once '../objects/pelanggan.php';
+	include_once '../objects/kursi.php';
 
 	$database = new Database();
 	$db = $database->getConnection();
 
-	$pelanggan = new pelanggan($db);
+	$kursi = new kursi($db);
 
 	$data = json_decode(file_get_contents("php://input"));
 
-
-	$pelanggan->ID_P = $data->ID_P;
-	$pelanggan->nama = $data->nama;
-	$pelanggan->nickname = $data->nickname;
-	$pelanggan->nomorhp = $data->nomorhp;
-	$pelanggan->email = $data->email;
-	$pelanggan->createdat = $data->createdat;
-	$pelanggan->createdby = $data->createdby;
-	$pelanggan->modifiedby = $data->modifiedby;
+	$kursi->ID_M = $data->ID_M;
+	$kursi->ID_K = $data->ID_K;
+	$kursi->ID_P = $data->ID_P;
+	$kursi->createdat = $data->createdat;
+	$kursi->createdby = $data->createdby;
+	$kursi->modifiedby = $data->modifiedby;
 	
 
-	if($pelanggan->update()){
+	if($kursi->update()){
 
 		http_response_code(200);
 
-		echo json_encode(array("message" => "pelanggan was updated."));
+		echo json_encode(array("message" => "kursi was updated."));
 	}
 
 	else{
 
 		http_response_code(503);
 
-		echo json_encode(array("message" => "Unable to update pelanggan."));
+		echo json_encode(array("message" => "Unable to update kursi."));
 	}
 ?>

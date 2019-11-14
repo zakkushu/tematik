@@ -27,6 +27,9 @@ $admin->ID_A = $data->ID_A;
 $admin->nama = $data->nama;
 $admin->email = $data->email;
 $admin->password = $data->password;
+$admin->createdat = $data->createdat;
+$admin->createdby = $data->createdby;
+$admin->modifiedby = $data->modifiedby;
 
 // update the admin
 if($admin->update()){

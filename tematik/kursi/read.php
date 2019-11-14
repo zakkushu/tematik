@@ -3,45 +3,41 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
  
 include_once '../config/database.php';
-include_once '../objects/guestlist.php';
+include_once '../objects/kursi.php';
  
 $database = new Database();
 $db = $database->getConnection();
  
-$guestlist = new guestlist($db);
+$kursi = new kursi($db);
  
 
-$stmt = $guestlist->read();
+$stmt = $kursi->read();
 $num = $stmt->rowCount();
-
  
 if($num>0){
  
-    $guestlist_arr=array();
-    $guestlist_arr["records"]=array();
+    $kursi_arr=array();
+    $kursi_arr["records"]=array();
  
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         
         extract($row);
  
-        $guestlist_item=array(
-            "nama_e" => $nama_e,
-            "nama" => $nama,
-            "tname" => $tname,
-            "ID_K" => $ID_K,
-            "kehadiran" => $kehadiran,
-            "raffle" => $raffle,
+        $kursi_item=array(
+            "ID_M" => $ID_M,
+            "ID_E" => $ID_K,
+            "ID_P" => $ID_P,
             "createdat" => $createdat,
             "createdby" => $createdby,
             "modifiedby" => $modifiedby
         );
  
-        array_push($guestlist_arr["records"], $guestlist_item);
+        array_push($kursi_arr["records"], $kursi_item);
     }
  
     http_response_code(200);
  
-    echo json_encode($guestlist_arr);
+    echo json_encode($kursi_arr);
 }
  
 else{
@@ -49,6 +45,6 @@ else{
     http_response_code(201);
  
     echo json_encode(
-        array("message" => "No guestlist found.")
+        array("message" => "No kursi found.")
     );
 }

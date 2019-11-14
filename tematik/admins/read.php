@@ -41,7 +41,10 @@ if($num>0){
             "ID_A" => $ID_A,
             "nama" => $nama,
             "email" => $email,
-            "password" => $password
+            "password" => $password,
+            "createdby" => $createdby,
+            "createdat" => $createdat,
+            "modifiedby" => $modifiedby
         );
  
         array_push($admins_arr["records"], $admin_item);

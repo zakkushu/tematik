@@ -22,7 +22,10 @@
             "ID_P" =>  $pelanggan->ID_P,
             "nama" => $pelanggan->nama,
             "nomorhp" => $pelanggan->nomorhp,
-            "email" => $pelanggan->email
+            "email" => $pelanggan->email,
+            "createdat" => $pelanggan->createdat,
+            "createdby" => $pelanggan->createdby,
+            "modifiedby" => $pelanggan->modifiedby
         );
      
         http_response_code(200);
