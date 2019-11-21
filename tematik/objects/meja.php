@@ -32,14 +32,7 @@ class meja{
 
         $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $this->ID_E = $row['ID_E'];
-        $this->ID_M = $row['ID_M'];
-        $this->tname = $row['tname'];
-        $this->createdby = $row['createdby'];
-        $this->createdat = $row['createdat'];
-        $this->modifiedby = $row['modifiedby'];
+        
         return $stmt;
     }
 

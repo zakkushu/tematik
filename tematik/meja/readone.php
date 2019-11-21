@@ -23,6 +23,7 @@
         $meja_arr["records"]=array();
      
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
             
             extract($row);
      
