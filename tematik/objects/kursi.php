@@ -22,6 +22,20 @@ class kursi{
         return $stmt;
     }
 
+    function readOne(){
+
+        $query = "SELECT * FROM " . $this->table_name . " WHERE ID_M = ?";
+
+        $stmt = $this->conn->prepare( $query );
+
+        $stmt->bindParam(1, $this->ID_M);
+
+        $stmt->execute();
+
+        
+        return $stmt;
+    }
+
     function create(){
         $query = "INSERT INTO " . $this->table_name . " SET ID_M=:ID_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby";
     

@@ -6,45 +6,45 @@
     header('Content-Type: application/json');
      
     include_once '../config/database.php';
-    include_once '../objects/meja.php';
+    include_once '../objects/kursi.php';
      
     $database = new Database();
     $db = $database->getConnection();
      
-    $meja = new meja($db);
+    $kursi = new kursi($db);
      
-    $meja->ID_E = isset($_GET['ID_E']) ? $_GET['ID_E'] : die();
+    $kursi->ID_M = isset($_GET['ID_M']) ? $_GET['ID_M'] : die();
      
-    $stmt = $meja->readOne();
+    $stmt = $kursi->readOne();
     $num = $stmt->rowCount();
     
     if($num>0){
-        $meja_arr=array();
-        $meja_arr["records"]=array();
-        $meja_arr["count"]=array();
+        $kursi_arr=array();
+        $kursi_arr["records"]=array();
+        $kursi_arr["count"]=array();
      
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
             
             extract($row);
      
-            $meja_item=array(
-                "ID_E" => $ID_E,
+            $kursi_item=array(
                 "ID_M" => $ID_M,
-                "tname" => $tname,
+                "ID_k" => $ID_K,
+                "ID+P" => $ID_P,
                 "createdat" => $createdat,
                 "createdby" => $createdby,
                 "modifiedby" => $modifiedby
             );
      
-            array_push($meja_arr["records"], $meja_item);
+            array_push($kursi_arr["records"], $kursi_item);
         }
      
         http_response_code(200);
         
-        array_push( $meja_arr["count"], $num);
+        array_push( $kursi_arr["count"], $num);
      
-        echo json_encode($meja_arr);
+        echo json_encode($kursi_arr);
     }
      
     else{
@@ -52,7 +52,7 @@
         http_response_code(201);
      
         echo json_encode(
-            array("message" => "No meja found.")
+            array("message" => "No kursi found.")
         );
     }
 ?>
