@@ -22,6 +22,27 @@ class meja{
         return $stmt;
     }
 
+    function readOne(){
+
+        $query = "SELECT * FROM " . $this->table_name . " WHERE ID_E = ?";
+
+        $stmt = $this->conn->prepare( $query );
+
+        $stmt->bindParam(1, $this->ID_E);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->ID_E = $row['ID_E'];
+        $this->ID_M = $row['ID_M'];
+        $this->tname = $row['tname'];
+        $this->createdby = $row['createdby'];
+        $this->createdat = $row['createdat'];
+        $this->modifiedby = $row['modifiedby'];
+        return $stmt;
+    }
+
     function create(){
         $query = "INSERT INTO " . $this->table_name . " SET ID_E=:ID_E, ID_M=:ID_M, tname=:tname, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby";
     
