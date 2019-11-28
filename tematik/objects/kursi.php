@@ -37,7 +37,7 @@ class kursi{
     }
 
     function create(){
-        $query = "INSERT INTO " . $this->table_name . " SET ID_M=:ID_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby";
+        $query = "INSERT INTO " . $this->table_name . " SET ID_M=:ID_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, modifiedby=:modifiedby";
     
         $stmt = $this->conn->prepare($query);
     
@@ -45,7 +45,6 @@ class kursi{
         $this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
         $this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
         $this->createdby=htmlspecialchars(strip_tags($this->createdby));
-        $this->createdat=htmlspecialchars(strip_tags($this->createdat));
         $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
     
@@ -53,7 +52,6 @@ class kursi{
         $stmt->bindParam(":nomorhp", $this->ID_K);
         $stmt->bindParam(":tname", $this->ID_P);
         $stmt->bindParam(":createdby", $this->createdby);
-        $stmt->bindParam(":createdat", $this->createdat);
         $stmt->bindParam(":modifiedby", $this->modifiedby);
 
         if($stmt->execute()){

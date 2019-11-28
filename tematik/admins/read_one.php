@@ -29,7 +29,6 @@ if($admin->nama!=null){
         "ID_A" =>  $admin->ID_A,
         "nama" => $admin->nama,
         "email" => $admin->email,
-        "password" => $admin->password,
         "createdat" => $admin->createdat,
         "createdby" => $admin->createdby,
         "modifiedby" => $admin->modifiedby

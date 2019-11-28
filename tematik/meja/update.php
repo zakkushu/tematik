@@ -15,7 +15,7 @@
 
 	$data = json_decode(file_get_contents("php://input"));
 
-
+	$meja->IDD_M = $data->IDD_M;
 	$meja->ID_E = $data->ID_E;
 	$meja->ID_M = $data->ID_M;
 	$meja->tname = $data->tname;

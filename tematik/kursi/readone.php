@@ -31,7 +31,7 @@
             $kursi_item=array(
                 "ID_M" => $ID_M,
                 "ID_k" => $ID_K,
-                "ID+P" => $ID_P,
+                "ID_P" => $ID_P,
                 "createdat" => $createdat,
                 "createdby" => $createdby,
                 "modifiedby" => $modifiedby

@@ -24,6 +24,7 @@ if($num>0){
         extract($row);
  
         $meja_item=array(
+            "IDD_M" => $IDD_M,
             "ID_E" => $ID_E,
             "ID_M" => $ID_M,
             "tname" => $tname,

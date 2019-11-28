@@ -3,6 +3,7 @@ class meja{
     private $conn;
     private $table_name = "meja";
 
+    public $IDD_M;
     public $ID_E;
     public $ID_M;
     public $tname;
@@ -37,7 +38,7 @@ class meja{
     }
 
     function create(){
-        $query = "INSERT INTO " . $this->table_name . " SET ID_E=:ID_E, ID_M=:ID_M, tname=:tname, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby";
+        $query = "INSERT INTO " . $this->table_name . " SET ID_E=:ID_E, ID_M=:ID_M, tname=:tname, createdby=:createdby, modifiedby=:modifiedby";
     
         $stmt = $this->conn->prepare($query);
     
@@ -45,7 +46,6 @@ class meja{
         $this->ID_M=htmlspecialchars(strip_tags($this->ID_M));
         $this->tname=htmlspecialchars(strip_tags($this->tname));
         $this->createdby=htmlspecialchars(strip_tags($this->createdby));
-        $this->createdat=htmlspecialchars(strip_tags($this->createdat));
         $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
     
@@ -53,7 +53,6 @@ class meja{
         $stmt->bindParam(":nomorhp", $this->ID_M);
         $stmt->bindParam(":tname", $this->tname);
         $stmt->bindParam(":createdby", $this->createdby);
-        $stmt->bindParam(":createdat", $this->createdat);
         $stmt->bindParam(":modifiedby", $this->modifiedby);
 
         if($stmt->execute()){
@@ -65,10 +64,11 @@ class meja{
 
     function update(){
 
-        $query = "UPDATE " . $this->table_name . " SET ID_E=:ID_E, ID_M=:ID_M, tname=:tname, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby WHERE tname = :tname";
+        $query = "UPDATE " . $this->table_name . " SET ID_E=:ID_E, ID_M=:ID_M, tname=:tname, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby WHERE IDD_M=:IDD_M";
 
         $stmt = $this->conn->prepare($query);
 
+        $this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
         $this->ID_E=htmlspecialchars(strip_tags($this->ID_E));
         $this->ID_M=htmlspecialchars(strip_tags($this->ID_M));
         $this->tname=htmlspecialchars(strip_tags($this->tname));
@@ -76,6 +76,7 @@ class meja{
         $this->createdat=htmlspecialchars(strip_tags($this->createdat));
         $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
+        $stmt->bindParam(":IDD_M", $this->IDD_M);
         $stmt->bindParam(":ID_E", $this->ID_E);
         $stmt->bindParam(":ID_M", $this->ID_M);
         $stmt->bindParam(":tname", $this->tname);
@@ -92,7 +93,7 @@ class meja{
     
     function delete(){
 
-        $query = "DELETE FROM " . $this->table_name . " WHERE tname = ?";
+        $query = "DELETE FROM " . $this->table_name . " WHERE IDD_M = ?";
 
         $stmt = $this->conn->prepare($query);
 

@@ -28,7 +28,6 @@
             "createdat" => $events->createdat,
             "createdby" => $events->createdby,
             "modifiedby" => $events->modifiedby
-     
         );
      
         http_response_code(200);

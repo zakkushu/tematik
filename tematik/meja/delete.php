@@ -15,7 +15,7 @@
 
 	$data = json_decode(file_get_contents("php://input"));
 
-	$meja->tname = $data->tname;
+	$meja->IDD_M = $data->IDD_M;
 
 	if($meja->delete()){
 

@@ -18,14 +18,13 @@ $data = json_decode(file_get_contents("php://input"));
  
 
 if(
-    !empty($data->nama) && !empty($data->nickname) && !empty($data->nomorhp) && !empty($data->email) && !empty($data->createdat) && !empty($data->createdby) && !empty($data->modifiedby)
+    !empty($data->nama) && !empty($data->nickname) && !empty($data->nomorhp) && !empty($data->email) && !empty($data->createdby)
 ){  
  
     $pelanggan->nama = $data->nama;
     $pelanggan->nickname = $data->nickname;
     $pelanggan->nomorhp = $data->nomorhp;
     $pelanggan->email = $data->email;
-    $pelanggan->createdat = $data->createdat;
     $pelanggan->createdby = $data->createdby;
     $pelanggan->modifiedby = $data->modifiedby;
  

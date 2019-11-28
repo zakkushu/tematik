@@ -41,7 +41,6 @@ if($num>0){
             "ID_A" => $ID_A,
             "nama" => $nama,
             "email" => $email,
-            "password" => $password,
             "createdby" => $createdby,
             "createdat" => $createdat,
             "modifiedby" => $modifiedby

@@ -60,7 +60,7 @@
 
 		function update(){
 
-	        $query = "UPDATE " . $this->table_name . " SET ID_E=:ID_E, ID_P=:ID_P, ID_M=:ID_M, ID_K=:ID_K, kehadiran=:kehadiran, raffle=:raffle, createdat=:createdat, createdby=:createdby, modifiedby=:modifiedby WHERE ID_P = :ID_P";
+	        $query = "UPDATE " . $this->table_name . " SET ID_E=:ID_E, ID_P=:ID_P, ID_M=:ID_M, ID_K=:ID_K, kehadiran=:kehadiran, raffle=:raffle, createdby=:createdby, modifiedby=:modifiedby WHERE ID_P = :ID_P";
 
 	        $stmt = $this->conn->prepare($query);
 
@@ -71,7 +71,6 @@
 			$this->kehadiran=htmlspecialchars(strip_tags($this->kehadiran));
 			$this->raffle=htmlspecialchars(strip_tags($this->raffle));
 			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
-			$this->createdat=htmlspecialchars(strip_tags($this->createdat));
 			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
 	    	$stmt->bindParam(":ID_E", $this->ID_E);
@@ -81,7 +80,6 @@
 			$stmt->bindparam(":kehadiran", $this->kehadiran);
 			$stmt->bindparam("raffle", $this->raffle);
 			$stmt->bindParam(":createdby", $this->createdby);
-			$stmt->bindParam(":createdat", $this->createdat);
 			$stmt->bindParam(":modifiedby", $this->modifiedby);
 
 	        if($stmt->execute()){

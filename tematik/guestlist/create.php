@@ -18,7 +18,7 @@ $data = json_decode(file_get_contents("php://input"));
  
 
 if(
-    !empty($data->ID_E) && !empty($data->ID_P) && !empty($data->ID_M) && !empty($data->ID_K) && !empty($data->kehadiran) && !empty($data->raffle) && !empty($data->createdat) && !empty($data->createdby) && !empty($data->modifiedby)   
+    !empty($data->ID_E) && !empty($data->ID_P) && !empty($data->ID_M) && !empty($data->ID_K) && !empty($data->kehadiran) && !empty($data->raffle) && !empty($data->createdby)   
 ){  
  
     $guestlist->ID_E = $data->ID_E;
@@ -27,7 +27,6 @@ if(
     $guestlist->ID_K = $data->ID_K;
     $guestlist->kehadiran = $data->kehadiran;
     $guestlist->raffle = $data->raffle;
-    $guestlist->createdat = $data->createdat;
     $guestlist->createdby = $data->createdby;
     $guestlist->modifiedby = $data->modifiedby;
  
