@@ -13,7 +13,7 @@
      
     $kursi = new kursi($db);
      
-    $kursi->ID_M = isset($_GET['ID_M']) ? $_GET['ID_M'] : die();
+    $kursi->IDD_M = isset($_GET['IDD_M']) ? $_GET['IDD_M'] : die();
      
     $stmt = $kursi->readOne();
     $num = $stmt->rowCount();
@@ -29,7 +29,7 @@
             extract($row);
      
             $kursi_item=array(
-                "ID_M" => $ID_M,
+                "IDD_M" => $IDD_M,
                 "ID_k" => $ID_K,
                 "ID_P" => $ID_P,
                 "createdat" => $createdat,

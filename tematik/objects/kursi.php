@@ -3,7 +3,7 @@ class kursi{
     private $conn;
     private $table_name = "kursi";
 
-    public $ID_M;
+    public $IDD_M;
     public $ID_K;
     public $ID_P;
     public $createdby;
@@ -24,11 +24,11 @@ class kursi{
 
     function readOne(){
 
-        $query = "SELECT * FROM " . $this->table_name . " WHERE ID_M = ?";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE IDD_M = ?";
 
         $stmt = $this->conn->prepare( $query );
 
-        $stmt->bindParam(1, $this->ID_M);
+        $stmt->bindParam(1, $this->IDD_M);
 
         $stmt->execute();
 
@@ -37,18 +37,18 @@ class kursi{
     }
 
     function create(){
-        $query = "INSERT INTO " . $this->table_name . " SET ID_M=:ID_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, modifiedby=:modifiedby";
+        $query = "INSERT INTO " . $this->table_name . " SET IDD_M=:IDD_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, modifiedby=:modifiedby";
     
         $stmt = $this->conn->prepare($query);
     
-        $this->ID_M=htmlspecialchars(strip_tags($this->ID_M));
+        $this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
         $this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
         $this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
         $this->createdby=htmlspecialchars(strip_tags($this->createdby));
         $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
     
-        $stmt->bindParam(":nama", $this->ID_M);
+        $stmt->bindParam(":nama", $this->IDD_M);
         $stmt->bindParam(":nomorhp", $this->ID_K);
         $stmt->bindParam(":tname", $this->ID_P);
         $stmt->bindParam(":createdby", $this->createdby);
@@ -63,18 +63,18 @@ class kursi{
 
     function update(){
 
-        $query = "UPDATE " . $this->table_name . " SET ID_M=:ID_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby WHERE ID_K = :ID_K";
+        $query = "UPDATE " . $this->table_name . " SET IDD_M=:IDD_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby WHERE ID_K = :ID_K";
 
         $stmt = $this->conn->prepare($query);
 
-        $this->ID_M=htmlspecialchars(strip_tags($this->ID_M));
+        $this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
         $this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
         $this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
         $this->createdby=htmlspecialchars(strip_tags($this->createdby));
         $this->createdat=htmlspecialchars(strip_tags($this->createdat));
         $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
-        $stmt->bindParam(":ID_M", $this->ID_M);
+        $stmt->bindParam(":IDD_M", $this->IDD_M);
         $stmt->bindParam(":ID_K", $this->ID_K);
         $stmt->bindParam(":ID_P", $this->ID_p);
         $stmt->bindParam(":createdby", $this->createdby);

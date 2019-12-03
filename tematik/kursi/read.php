@@ -24,7 +24,7 @@ if($num>0){
         extract($row);
  
         $kursi_item=array(
-            "ID_M" => $ID_M,
+            "IDD_M" => $IDD_M,
             "ID_E" => $ID_K,
             "ID_P" => $ID_P,
             "createdat" => $createdat,
