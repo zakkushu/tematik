@@ -22,10 +22,10 @@
 	$events->tanggal_e = $data->tanggal_e;
 	$events->waktu_e = $data->waktu_e;
 	$events->jumlah_m = $data->jumlah_m;
-	$events->jumlah_k = $data->jumlah_k;
-	$events->createdat = $data->createdat;
 	$events->createdby = $data->createdby;
+	$events->createdat = $data->createdat;
 	$events->modifiedby = $data->modifiedby;
+	$events->notes = $data->notes;
 
 
 	if($events->update()){

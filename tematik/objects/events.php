@@ -74,21 +74,29 @@
 	        $this->lokasi_e = $row['lokasi_e'];
 	        $this->tanggal_e = $row['tanggal_e'];
 	        $this->waktu_e = $row['waktu_e'];
-	        $this->jumlah_m = $row['jumlah_m'];
+			$this->jumlah_m = $row['jumlah_m'];
+			$this->createdby = $row['createdby'];
+			$this->createdat = $row['createdat'];
+			$this->modifiedby = $row['modifiedby'];
+			$this->notes = $row['notes'];
 	    }
 
 	     function update(){
 
-	        $query = "UPDATE " . $this->table_name . " SET nama_e=:nama_e, lokasi_e=:lokasi_e, tanggal_e=:tanggal_e, waktu_e=:waktu_e, jumlah_m=:jumlah_m, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby WHERE ID_E = :ID_E";
+	        $query = "UPDATE " . $this->table_name . " SET nama_e=:nama_e, lokasi_e=:lokasi_e, tanggal_e=:tanggal_e, waktu_e=:waktu_e, jumlah_m=:jumlah_m, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby, notes=:notes WHERE ID_E = :ID_E";
 
 	        $stmt = $this->conn->prepare($query);
 
+	        $this->ID_E=htmlspecialchars(strip_tags($this->ID_E));
 	        $this->nama_e=htmlspecialchars(strip_tags($this->nama_e));
 	        $this->lokasi_e=htmlspecialchars(strip_tags($this->lokasi_e));
 	        $this->tanggal_e=htmlspecialchars(strip_tags($this->tanggal_e));
 	        $this->waktu_e=htmlspecialchars(strip_tags($this->waktu_e));
-	        $this->jumlah_m=htmlspecialchars(strip_tags($this->jumlah_m));
-	        $this->jumlah_k=htmlspecialchars(strip_tags($this->jumlah_k));
+			$this->jumlah_m=htmlspecialchars(strip_tags($this->jumlah_m));
+			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
+			$this->createdat=htmlspecialchars(strip_tags($this->createdat));
+			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
+	        $this->notes=htmlspecialchars(strip_tags($this->notes));
 	    
 	    	$stmt->bindParam(":ID_E", $this->ID_E);
 	        $stmt->bindParam(":nama_e", $this->nama_e);
@@ -99,6 +107,7 @@
 			$stmt->bindParam(":createdby", $this->createdby);
 			$stmt->bindParam(":createdat", $this->createdat);
 			$stmt->bindParam(":modifiedby", $this->modifiedby);
+			$stmt->bindParam(":notes", $this->notes);
 
 	        if($stmt->execute()){
 	            return true;

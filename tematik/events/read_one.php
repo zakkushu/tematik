@@ -27,7 +27,8 @@
             "jumlah_m" => $events->jumlah_m,
             "createdat" => $events->createdat,
             "createdby" => $events->createdby,
-            "modifiedby" => $events->modifiedby
+            "modifiedby" => $events->modifiedby,
+            "notes" => $events->notes
         );
      
         http_response_code(200);
