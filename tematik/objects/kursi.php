@@ -22,6 +22,21 @@ class kursi{
         return $stmt;
     }
 
+    function rilreadOne(){
+        $query = "SELECT IDD_M, p.ID_P, nama FROM " .$this->table_name . ", pelanggan p WHERE ID_K = ? LIMIT 0,1";
+        $stmt = $this->conn->prepare( $query );
+
+	        $stmt->bindParam(1, $this->ID_K);
+
+	        $stmt->execute();
+
+	        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->IDD_M = $row['IDD_M'];
+            $this->ID_P = $row['ID_P'];
+            $this->nama = $row['nama'];
+    }
+
     function readOne(){
 
         $query = "SELECT * FROM " . $this->table_name . " WHERE IDD_M = ?";
@@ -35,6 +50,8 @@ class kursi{
         
         return $stmt;
     }
+
+    
 
     function create(){
         $query = "INSERT INTO " . $this->table_name . " SET IDD_M=:IDD_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, modifiedby=:modifiedby";

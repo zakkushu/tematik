@@ -13,46 +13,23 @@
      
     $kursi = new kursi($db);
      
-    $kursi->IDD_M = isset($_GET['IDD_M']) ? $_GET['IDD_M'] : die();
+    $kursi->ID_K = isset($_GET['ID_K']) ? $_GET['ID_K'] : die();
      
-    $stmt = $kursi->readOne();
-    $num = $stmt->rowCount();
-    
-    if($num>0){
-        $kursi_arr=array();
-        $kursi_arr["records"]=array();
-        $kursi_arr["count"]=array();
+    $kursi->rilreadOne();
      
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-
-            
-            extract($row);
-     
-            $kursi_item=array(
-                "IDD_M" => $IDD_M,
-                "ID_k" => $ID_K,
-                "ID_P" => $ID_P,
-                "createdat" => $createdat,
-                "createdby" => $createdby,
-                "modifiedby" => $modifiedby
-            );
-     
-            array_push($kursi_arr["records"], $kursi_item);
-        }
+    if($kursi->ID_K!=null){
+        $kursi_arr = array(
+            "IDD_M" =>  $kursi->IDD_M,
+            "ID_P" => $kursi->ID_P,
+            "nama" => $kursi->nama
+        );
      
         http_response_code(200);
-        
-        array_push( $kursi_arr["count"], $num);
-     
         echo json_encode($kursi_arr);
     }
      
     else{
-     
         http_response_code(201);
-     
-        echo json_encode(
-            array("message" => "No kursi found.")
-        );
+        echo json_encode(array("message" => "kursi does not exist."));
     }
 ?>
