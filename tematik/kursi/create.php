@@ -18,11 +18,10 @@ $data = json_decode(file_get_contents("php://input"));
  
 
 if(
-    !empty($data->IDD_M) && !empty($data->ID_K) && !empty($data->ID_P) && !empty($data->createdby)
+    !empty($data->IDD_M) && !empty($data->ID_P) && !empty($data->createdby)
 ){  
  
     $kursi->IDD_M = $data->IDD_M;
-    $kursi->ID_K = $data->ID_K;
     $kursi->ID_P = $data->ID_P;
     $kursi->createdby = $data->createdby;
     $kursi->modifiedby = $data->modifiedby;
