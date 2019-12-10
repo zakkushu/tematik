@@ -25,19 +25,25 @@ $data = json_decode(file_get_contents("php://input"));
 
 $admin->email = $data->email;
  
+if(!empty($data->email) && !empty($data->password)){
+        $admin->login();
+        $decryption=openssl_decrypt ($admin->password, $ciphering, $decryption_key, $options, $decryption_iv); 
 
-$admin->login();
-
-$decryption=openssl_decrypt ($admin->password, $ciphering, $decryption_key, $options, $decryption_iv); 
-
-if($data->password == $decryption && $data->email == $admin->email){
-        http_response_code(201);
-        echo json_encode(array("message" => "success"));
+        if($data->password == $decryption && $data->email == $admin->email){
+                http_response_code(201);
+                echo json_encode(array("message" => "Login Success"));
+        }
+        else{
+                http_response_code(401);
+                echo json_encode(array("message" => "Login Failed"));
+        }
 }
 else{
-        http_response_code(503);
-        echo json_encode(array("message" => "failed"));
+        http_response_code(401);
+        echo json_encode(array("message" => "please insert correct login information"));
 }
+
+
 
 
 ?> 
