@@ -59,25 +59,21 @@
 
 		function update(){
 
-			$query = "UPDATE " . $this->table_name . " SET ID_E=:ID_E, ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, raffle=:raffle, createdby=:createdby, modifiedby=:modifiedby WHERE IDD_M = :IDD_M";
+			$query = "UPDATE " . $this->table_name . " SET ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, createdby=:createdby, modifiedby=:modifiedby WHERE IDD_M = :IDD_M";
 
 			$stmt = $this->conn->prepare($query);
 
-			$this->ID_E=htmlspecialchars(strip_tags($this->ID_E));
 			$this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
 			$this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
 			$this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
 			$this->kehadiran=htmlspecialchars(strip_tags($this->kehadiran));
-			$this->raffle=htmlspecialchars(strip_tags($this->raffle));
 			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
 			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
-			$stmt->bindParam(":ID_E", $this->ID_E);
 			$stmt->bindParam(":ID_P", $this->ID_P);
 			$stmt->bindParam(":IDD_M", $this->IDD_M);
 			$stmt->bindParam(":ID_K", $this->ID_K);
 			$stmt->bindparam(":kehadiran", $this->kehadiran);
-			$stmt->bindparam("raffle", $this->raffle);
 			$stmt->bindParam(":createdby", $this->createdby);
 			$stmt->bindParam(":modifiedby", $this->modifiedby);
 
