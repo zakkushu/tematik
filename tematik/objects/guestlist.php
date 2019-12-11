@@ -26,7 +26,7 @@
 		}
 
 		function create(){
-			$query = "INSERT INTO " . $this->table_name . " SET ID_E=:ID_E, ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, raffle=:raffle, createdat=:createdat, createdby=:createdby, modifiedby=:modifiedby";
+			$query = "INSERT INTO " . $this->table_name . " SET ID_E=:ID_E, ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, raffle=:raffle, createdby=:createdby, modifiedby=:modifiedby";
 	    
 	        $stmt = $this->conn->prepare($query);
 	    
@@ -37,7 +37,6 @@
 			$this->kehadiran=htmlspecialchars(strip_tags($this->kehadiran));
 			$this->raffle=htmlspecialchars(strip_tags($this->raffle));
 			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
-			$this->createdat=htmlspecialchars(strip_tags($this->createdat));
 			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
 	    
@@ -48,7 +47,6 @@
 			$stmt->bindparam(":kehadiran", $this->kehadiran);
 			$stmt->bindparam("raffle", $this->raffle);
 			$stmt->bindParam(":createdby", $this->createdby);
-			$stmt->bindParam(":createdat", $this->createdat);
 			$stmt->bindParam(":modifiedby", $this->modifiedby);
 
 	        if($stmt->execute()){

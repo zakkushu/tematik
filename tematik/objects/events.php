@@ -83,7 +83,7 @@
 
 	     function update(){
 
-	        $query = "UPDATE " . $this->table_name . " SET nama_e=:nama_e, lokasi_e=:lokasi_e, tanggal_e=:tanggal_e, waktu_e=:waktu_e, jumlah_m=:jumlah_m, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby, notes=:notes WHERE ID_E = :ID_E";
+	        $query = "UPDATE " . $this->table_name . " SET nama_e=:nama_e, lokasi_e=:lokasi_e, tanggal_e=:tanggal_e, waktu_e=:waktu_e, jumlah_m=:jumlah_m, modifiedby=:modifiedby, notes=:notes WHERE ID_E = :ID_E";
 
 	        $stmt = $this->conn->prepare($query);
 
@@ -93,8 +93,6 @@
 	        $this->tanggal_e=htmlspecialchars(strip_tags($this->tanggal_e));
 	        $this->waktu_e=htmlspecialchars(strip_tags($this->waktu_e));
 			$this->jumlah_m=htmlspecialchars(strip_tags($this->jumlah_m));
-			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
-			$this->createdat=htmlspecialchars(strip_tags($this->createdat));
 			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 	        $this->notes=htmlspecialchars(strip_tags($this->notes));
 	    
@@ -104,8 +102,6 @@
 	        $stmt->bindParam(":tanggal_e", $this->tanggal_e);
 	        $stmt->bindParam(":waktu_e", $this->waktu_e);
 	        $stmt->bindParam(":jumlah_m", $this->jumlah_m);
-			$stmt->bindParam(":createdby", $this->createdby);
-			$stmt->bindParam(":createdat", $this->createdat);
 			$stmt->bindParam(":modifiedby", $this->modifiedby);
 			$stmt->bindParam(":notes", $this->notes);
 

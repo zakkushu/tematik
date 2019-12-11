@@ -33,7 +33,6 @@ $encryption = openssl_encrypt($data->password, $ciphering, $encryption_key, $opt
 $admin->nama = $data->nama;
 $admin->email = $data->email;
 $admin->password = $encryption;
-$admin->createdby = $data->createdby;
 $admin->modifiedby = $data->modifiedby;
 
 // update the admin

@@ -17,7 +17,6 @@
 
 	$meja->IDD_M = $data->IDD_M;		
 	$meja->tname = $data->tname;
-	$meja->createdby = $data->createdby;
 	$meja->modifiedby = $data->modifiedby;
 	
 

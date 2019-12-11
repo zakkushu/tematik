@@ -22,7 +22,6 @@
 	$guestlist->kehadiran = $data->kehadiran;
 	$guestlist->raffle = $data->raffle;
 	$guestlist->createdat = $data->createdat;
-	$guestlist->createdby = $data->createdby;
 	$guestlist->modifiedby = $data->modifiedby;
 	
 

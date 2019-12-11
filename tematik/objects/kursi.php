@@ -78,20 +78,18 @@ class kursi{
 
     function update(){
 
-        $query = "UPDATE " . $this->table_name . " SET IDD_M=:IDD_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, modifiedby=:modifiedby WHERE ID_K = :ID_K";
+        $query = "UPDATE " . $this->table_name . " SET IDD_M=:IDD_M, ID_K=:ID_K, ID_P=:ID_P, modifiedby=:modifiedby WHERE ID_K = :ID_K";
 
         $stmt = $this->conn->prepare($query);
 
         $this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
         $this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
         $this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
-        $this->createdby=htmlspecialchars(strip_tags($this->createdby));
         $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
         $stmt->bindParam(":IDD_M", $this->IDD_M);
         $stmt->bindParam(":ID_K", $this->ID_K);
         $stmt->bindParam(":ID_P", $this->ID_P);
-        $stmt->bindParam(":createdby", $this->createdby);
         $stmt->bindParam(":modifiedby", $this->modifiedby);
 
         if($stmt->execute()){

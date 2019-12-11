@@ -64,18 +64,16 @@ class meja{
 
     function update(){
 
-        $query = "UPDATE " . $this->table_name . " SET tname=:tname, createdby=:createdby, modifiedby=:modifiedby WHERE IDD_M=:IDD_M";
+        $query = "UPDATE " . $this->table_name . " SET tname=:tname, modifiedby=:modifiedby WHERE IDD_M=:IDD_M";
 
         $stmt = $this->conn->prepare($query);
 
         $this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
         $this->tname=htmlspecialchars(strip_tags($this->tname));
-        $this->createdby=htmlspecialchars(strip_tags($this->createdby));
         $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
         $stmt->bindParam(":IDD_M", $this->IDD_M);
         $stmt->bindParam(":tname", $this->tname);
-        $stmt->bindParam(":createdby", $this->createdby);
         $stmt->bindParam(":modifiedby", $this->modifiedby);
 
         if($stmt->execute()){

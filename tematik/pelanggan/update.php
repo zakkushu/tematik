@@ -21,7 +21,6 @@
 	$pelanggan->nickname = $data->nickname;
 	$pelanggan->nomorhp = $data->nomorhp;
 	$pelanggan->email = $data->email;
-	$pelanggan->createdby = $data->createdby;
 	$pelanggan->modifiedby = $data->modifiedby;
 	
 

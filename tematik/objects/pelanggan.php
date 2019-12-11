@@ -25,7 +25,7 @@
 		}
 
 		function create(){
-			$query = "INSERT INTO " . $this->table_name . " SET nama=:nama, nickname=:nickname, nomorhp=:nomorhp, email=:email, createdby=:createdby, modifiedby=:modifiedby";
+			$query = "INSERT INTO " . $this->table_name . " SET nama=:nama, nickname=:nickname, nomorhp=:nomorhp, email=:email, modifiedby=:modifiedby";
 	    
 	        $stmt = $this->conn->prepare($query);
 	    
@@ -33,7 +33,6 @@
 	        $this->nickname=htmlspecialchars(strip_tags($this->nickname));
 	        $this->nomorhp=htmlspecialchars(strip_tags($this->nomorhp));
 	        $this->email=htmlspecialchars(strip_tags($this->email));
-			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
 			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
 	    
@@ -41,7 +40,6 @@
 	        $stmt->bindParam(":nickname", $this->nickname);
 	        $stmt->bindParam(":nomorhp", $this->nomorhp);
 			$stmt->bindParam(":email", $this->email);
-			$stmt->bindParam(":createdby", $this->createdby);
 			$stmt->bindParam(":modifiedby", $this->modifiedby);
 
 
