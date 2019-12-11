@@ -98,6 +98,22 @@ class kursi{
 
         return false;
     }
+
+    function count(){
+        $query = "SELECT m.ID_E, k.IDD_M, k.ID_K FROM meja m, kursi k WHERE k.IDD_M = m.IDD_M AND ID_E = ?";
+        
+        $stmt = $this->conn->prepare($query);
+
+        $this->ID_E=htmlspecialchars(strip_tags($this->ID_E));
+
+        $stmt->bindParam(1, $this->ID_K);
+
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+    }
     
     function delete(){
 
