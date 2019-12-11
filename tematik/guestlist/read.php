@@ -25,15 +25,15 @@ if($num>0){
         extract($row);
  
         $guestlist_item=array(
-            "nama_e" => $nama_e,
-            "nama" => $nama,
-            "tname" => $tname,
+            "ID_E" => $ID_E,
+            "IDD_M" => $IDD_M,
             "ID_K" => $ID_K,
+            "ID_P" => $ID_P,
             "kehadiran" => $kehadiran,
             "raffle" => $raffle,
-            "createdat" => $createdat,
             "createdby" => $createdby,
-            "modifiedby" => $modifiedby
+            "createdat" => $createdat,
+            "modifiedby" => $modifiedby,
         );
  
         array_push($guestlist_arr["records"], $guestlist_item);

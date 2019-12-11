@@ -17,7 +17,7 @@
 
 	$guestlist->ID_E = $data->ID_E;
 	$guestlist->ID_P = $data->ID_P;
-	$guestlist->ID_M = $data->ID_M;
+	$guestlist->IDD_M = $data->IDD_M;
 	$guestlist->ID_K = $data->ID_K;
 	$guestlist->kehadiran = $data->kehadiran;
 	$guestlist->raffle = $data->raffle;

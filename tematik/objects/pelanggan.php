@@ -9,7 +9,6 @@
 		public $nomorhp;
 		public $email;
 		public $createdby;
-		public $createdat;
 		public $modifiedby;
 
 		public function __construct($db){
@@ -25,7 +24,7 @@
 		}
 
 		function create(){
-			$query = "INSERT INTO " . $this->table_name . " SET nama=:nama, nickname=:nickname, nomorhp=:nomorhp, email=:email, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby";
+			$query = "INSERT INTO " . $this->table_name . " SET nama=:nama, nickname=:nickname, nomorhp=:nomorhp, email=:email, createdby=:createdby, modifiedby=:modifiedby";
 	    
 	        $stmt = $this->conn->prepare($query);
 	    
@@ -34,7 +33,6 @@
 	        $this->nomorhp=htmlspecialchars(strip_tags($this->nomorhp));
 	        $this->email=htmlspecialchars(strip_tags($this->email));
 			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
-			$this->createdat=htmlspecialchars(strip_tags($this->createdat));
 			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
 	    
@@ -43,7 +41,6 @@
 	        $stmt->bindParam(":nomorhp", $this->nomorhp);
 			$stmt->bindParam(":email", $this->email);
 			$stmt->bindParam(":createdby", $this->createdby);
-			$stmt->bindParam(":createdat", $this->createdat);
 			$stmt->bindParam(":modifiedby", $this->modifiedby);
 
 
@@ -53,6 +50,7 @@
 	    
 	        return false;
 		}
+		
 		function readOne(){
 
 	        $query = "SELECT * FROM " . $this->table_name . " WHERE ID_P = ? LIMIT 0,1";
