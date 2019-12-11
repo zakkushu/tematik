@@ -57,6 +57,20 @@
 	        return false;
 		}
 
+		function readOne(){
+
+			$query = "SELECT * FROM guestlist WHERE ID_E=?";
+	
+			$stmt = $this->conn->prepare( $query );
+	
+			$stmt->bindParam(1, $this->ID_E);
+	
+			$stmt->execute();
+	
+			
+			return $stmt;
+		}
+
 		function update(){
 
 			$query = "UPDATE " . $this->table_name . " SET ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, modifiedby=:modifiedby WHERE IDD_M = :IDD_M";
