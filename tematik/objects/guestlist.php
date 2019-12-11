@@ -59,46 +59,44 @@
 
 		function update(){
 
-	        $query = "UPDATE " . $this->table_name . " SET ID_E=:ID_E, ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, raffle=:raffle, createdby=:createdby, modifiedby=:modifiedby WHERE ID_G = :ID_G";
+			$query = "UPDATE " . $this->table_name . " SET ID_E=:ID_E, ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, raffle=:raffle, createdby=:createdby, modifiedby=:modifiedby WHERE IDD_M = :IDD_M";
 
-	        $stmt = $this->conn->prepare($query);
+			$stmt = $this->conn->prepare($query);
 
-			$this->ID_G=htmlspecialchars(strip_tags($this->ID_G));
 			$this->ID_E=htmlspecialchars(strip_tags($this->ID_E));
-	        $this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
-	        $this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
-	        $this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
+			$this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
+			$this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
+			$this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
 			$this->kehadiran=htmlspecialchars(strip_tags($this->kehadiran));
 			$this->raffle=htmlspecialchars(strip_tags($this->raffle));
 			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
 			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
-			$stmt->bindParam(":ID_G", $this->ID_G);
-	    	$stmt->bindParam(":ID_E", $this->ID_E);
-	        $stmt->bindParam(":ID_P", $this->ID_P);
-	        $stmt->bindParam(":IDD_M", $this->IDD_M);
+			$stmt->bindParam(":ID_E", $this->ID_E);
+			$stmt->bindParam(":ID_P", $this->ID_P);
+			$stmt->bindParam(":IDD_M", $this->IDD_M);
 			$stmt->bindParam(":ID_K", $this->ID_K);
 			$stmt->bindparam(":kehadiran", $this->kehadiran);
 			$stmt->bindparam("raffle", $this->raffle);
 			$stmt->bindParam(":createdby", $this->createdby);
 			$stmt->bindParam(":modifiedby", $this->modifiedby);
 
-	        if($stmt->execute()){
-	            return true;
-	        }
+			if($stmt->execute()){
+			    return true;
+			}
 
-	        return false;
+			return false;
 		}
 		
 		function delete(){
 
-	        $query = "DELETE FROM " . $this->table_name . " WHERE ID_G = ?";
+	        $query = "DELETE FROM " . $this->table_name . " WHERE IDD_M = ?";
 
 	        $stmt = $this->conn->prepare($query);
 
-	        $this->ID_G=htmlspecialchars(strip_tags($this->ID_G));
+	        $this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
 
-	        $stmt->bindParam(1, $this->ID_G);
+	        $stmt->bindParam(1, $this->IDD_M);
 
 	        if($stmt->execute()){
 	            return true;
