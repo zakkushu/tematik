@@ -76,7 +76,7 @@ class Admin{
 
     function update(){
 
-        $query = "UPDATE " . $this->table_name . " SET nama = :nama, email = :email, password = :password, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby WHERE ID_A = :ID_A";
+        $query = "UPDATE " . $this->table_name . " SET nama = :nama, email = :email, password = :password, createdby=:createdby, modifiedby=:modifiedby WHERE ID_A = :ID_A";
 
         $stmt = $this->conn->prepare($query);
 
@@ -89,7 +89,6 @@ class Admin{
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":password", $this->password);
         $stmt->bindParam(":createdby", $this->createdby);
-        $stmt->bindParam(":createdat", $this->createdat);
         $stmt->bindParam(":modifiedby", $this->modifiedby);
 
         // execute the query

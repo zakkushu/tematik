@@ -22,12 +22,17 @@ $data = json_decode(file_get_contents("php://input"));
 
 // set ID property of admin to be edited
 $admin->ID_A = $data->ID_A;
+$ciphering = "AES-128-CTR"; 
+$iv_length = openssl_cipher_iv_length($ciphering); 
+$options = 0; 
+$encryption_iv = '1234567891011121'; 
+$encryption_key = "tematik"; 
+$encryption = openssl_encrypt($data->password, $ciphering, $encryption_key, $options, $encryption_iv); 
 
 // set admin property values
 $admin->nama = $data->nama;
 $admin->email = $data->email;
-$admin->password = $data->password;
-$admin->createdat = $data->createdat;
+$admin->password = $encryption;
 $admin->createdby = $data->createdby;
 $admin->modifiedby = $data->modifiedby;
 
