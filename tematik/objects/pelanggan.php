@@ -9,6 +9,7 @@
 		public $nomorhp;
 		public $email;
 		public $createdby;
+		public $createdat;
 		public $modifiedby;
 
 		public function __construct($db){
