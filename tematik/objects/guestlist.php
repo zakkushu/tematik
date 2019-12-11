@@ -96,7 +96,7 @@
 
 		function update(){
 
-			$query = "UPDATE " . $this->table_name . " SET ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, modifiedby=:modifiedby WHERE IDD_M = :IDD_M AND OD_K = :ID_K";
+			$query = "UPDATE " . $this->table_name . " SET ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, modifiedby=:modifiedby WHERE IDD_M = :IDD_M AND ID_K = :ID_K";
 
 			$stmt = $this->conn->prepare($query);
 
