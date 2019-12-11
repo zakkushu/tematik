@@ -15,7 +15,7 @@
 
 	$data = json_decode(file_get_contents("php://input"));
 
-	$guestlist->ID_G = $data->ID_G;
+	$guestlist->IDD_M = $data->IDD_M;
 
 	if($guestlist->delete()){
 
