@@ -27,14 +27,34 @@ if(
     $kursi->modifiedby = $data->modifiedby;
  
     if($kursi->create()){
+
+
+        $stmt = $kursi->aidi();
+        $num = $stmt->rowCount();
  
-        http_response_code(201);
- 
-        echo json_encode(array("message" => "kursi was created."));
-    }
+        if($num>0){
+        
+            $kursi_arr=array();
+            $kursi_arr["records"]=array();
+        
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                
+                extract($row);
+        
+                $kursi_item=array(
+                    "ID_K" => $ID_K
+                );
+        
+                array_push($kursi_arr["records"], $kursi_item);
+            }
+        
+            http_response_code(200);
+        
+            echo json_encode($kursi_arr);
+        }
+    }   
  
     else{
- 
         http_response_code(503);
  
         echo json_encode(array("message" => "Unable to add kursi. service unavailable"));
