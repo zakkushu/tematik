@@ -36,6 +36,7 @@
                 "ID_P" => $ID_P,
                 "nama" => $nama,
                 "kehadiran" => $kehadiran,
+                "raffle" => $raffle,
                 "createdby" => $createdby,
                 "createdat" => $createdat,
                 "modifiedby" => $modifiedby
