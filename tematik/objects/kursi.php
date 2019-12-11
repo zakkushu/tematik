@@ -39,7 +39,7 @@ class kursi{
 
     function readOne(){
 
-        $query = "SELECT IDD_M, ID_K, p.ID_P, p.nama, k.createdby, k.createdat, k.modifiedby FROM kursi k INNER JOIN pelanggan p on IDD_M = 1 WHERE k.ID_P = p.ID_P ORDER BY k.createdat ASC";
+        $query = "SELECT IDD_M, ID_K, p.ID_P, p.nama, k.createdby, k.createdat, k.modifiedby FROM kursi k INNER JOIN pelanggan p on IDD_M = ? WHERE k.ID_P = p.ID_P ORDER BY k.createdat ASC";
 
         $stmt = $this->conn->prepare( $query );
 
