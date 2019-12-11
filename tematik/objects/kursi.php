@@ -51,6 +51,15 @@ class kursi{
         return $stmt;
     }
 
+    function aidi(){
+        $query = "SELECT ID_K FROM kursi ORDER BY createdat DESC LIMIT 0,1";
+        $stmt = $this->conn->prepare( $query );
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+
     
 
     function create(){
@@ -106,13 +115,14 @@ class kursi{
 
         $this->ID_E=htmlspecialchars(strip_tags($this->ID_E));
 
-        $stmt->bindParam(1, $this->ID_K);
+        $stmt = $this->conn->prepare( $query );
 
-        if($stmt->execute()){
-            return true;
-        }
+        $stmt->bindParam(1, $this->IDD_M);
 
-        return false;
+        $stmt->execute();
+
+        
+        return $stmt;
     }
     
     function delete(){
