@@ -74,9 +74,29 @@
 			return $stmt;
 		}
 
+		function hadir(){
+			$query = "SELECT p.nama, kehadiran FROM guestlist g
+				INNER JOIN pelanggan p on g.ID_P = p.ID_P
+				WHERE kehadiran = 'ya'";
+
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+
+		function nohadir(){
+			$query = "SELECT p.nama, kehadiran FROM guestlist g
+				INNER JOIN pelanggan p on g.ID_P = p.ID_P
+				WHERE kehadiran = 'tidak'";
+
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+
 		function update(){
 
-			$query = "UPDATE " . $this->table_name . " SET ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, modifiedby=:modifiedby WHERE IDD_M = :IDD_M";
+			$query = "UPDATE " . $this->table_name . " SET ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, modifiedby=:modifiedby WHERE IDD_M = :IDD_M AND OD_K = :ID_K";
 
 			$stmt = $this->conn->prepare($query);
 
