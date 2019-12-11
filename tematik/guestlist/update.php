@@ -15,13 +15,13 @@
 
 	$data = json_decode(file_get_contents("php://input"));
 
+	$guestlist->ID_G = $data->ID_G;
 	$guestlist->ID_E = $data->ID_E;
 	$guestlist->ID_P = $data->ID_P;
 	$guestlist->IDD_M = $data->IDD_M;
 	$guestlist->ID_K = $data->ID_K;
 	$guestlist->kehadiran = $data->kehadiran;
 	$guestlist->raffle = $data->raffle;
-	$guestlist->createdat = $data->createdat;
 	$guestlist->modifiedby = $data->modifiedby;
 	
 

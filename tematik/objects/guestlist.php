@@ -3,6 +3,7 @@
 		private $conn;
 		private $table_name = "guestlist";
 
+		public $ID_G;
 		public $ID_E;
 		public $ID_P;
 		public $IDD_M;
@@ -58,10 +59,11 @@
 
 		function update(){
 
-	        $query = "UPDATE " . $this->table_name . " SET ID_E=:ID_E, ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, raffle=:raffle, createdby=:createdby, modifiedby=:modifiedby WHERE ID_P = :ID_P";
+	        $query = "UPDATE " . $this->table_name . " SET ID_E=:ID_E, ID_P=:ID_P, IDD_M=:IDD_M, ID_K=:ID_K, kehadiran=:kehadiran, raffle=:raffle, createdby=:createdby, modifiedby=:modifiedby WHERE ID_G = :ID_G";
 
 	        $stmt = $this->conn->prepare($query);
 
+			$this->ID_G=htmlspecialchars(strip_tags($this->ID_G));
 			$this->ID_E=htmlspecialchars(strip_tags($this->ID_E));
 	        $this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
 	        $this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
@@ -71,6 +73,7 @@
 			$this->createdby=htmlspecialchars(strip_tags($this->createdby));
 			$this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
+			$stmt->bindParam(":ID_G", $this->ID_G);
 	    	$stmt->bindParam(":ID_E", $this->ID_E);
 	        $stmt->bindParam(":ID_P", $this->ID_P);
 	        $stmt->bindParam(":IDD_M", $this->IDD_M);
@@ -89,13 +92,13 @@
 		
 		function delete(){
 
-	        $query = "DELETE FROM " . $this->table_name . " WHERE ID_P = ?";
+	        $query = "DELETE FROM " . $this->table_name . " WHERE ID_G = ?";
 
 	        $stmt = $this->conn->prepare($query);
 
-	        $this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
+	        $this->ID_G=htmlspecialchars(strip_tags($this->ID_G));
 
-	        $stmt->bindParam(1, $this->ID_P);
+	        $stmt->bindParam(1, $this->ID_G);
 
 	        if($stmt->execute()){
 	            return true;

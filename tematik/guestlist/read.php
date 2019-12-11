@@ -25,6 +25,7 @@ if($num>0){
         extract($row);
  
         $guestlist_item=array(
+            "ID_G" => $ID_G,
             "ID_E" => $ID_E,
             "IDD_M" => $IDD_M,
             "ID_K" => $ID_K,
