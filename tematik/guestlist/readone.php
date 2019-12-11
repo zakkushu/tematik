@@ -31,8 +31,10 @@
             $guestlist_item=array(
                 "ID_E" => $ID_E,
                 "IDD_M" => $IDD_M,
+                "tname" => $tname,
                 "ID_K" => $ID_K,
                 "ID_P" => $ID_P,
+                "nama" => $nama,
                 "kehadiran" => $kehadiran,
                 "createdby" => $createdby,
                 "createdat" => $createdat,
