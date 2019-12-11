@@ -23,7 +23,7 @@ class kursi{
     }
 
     function rilreadOne(){
-        $query = "SELECT IDD_M, p.ID_P, p.nama FROM kursi k, pelanggan p WHERE ID_K = ? LIMIT 0,1";
+        $query = "SELECT IDD_M, k.ID_P, p.nama FROM kursi k, pelanggan p WHERE ID_K = 9 AND k.ID_P = p.ID_P LIMIT 0,1";
         $stmt = $this->conn->prepare( $query );
 
 	        $stmt->bindParam(1, $this->ID_K);
