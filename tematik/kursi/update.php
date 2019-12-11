@@ -18,7 +18,6 @@
 	$kursi->IDD_M = $data->IDD_M;
 	$kursi->ID_K = $data->ID_K;
 	$kursi->ID_P = $data->ID_P;
-	$kursi->createdat = $data->createdat;
 	$kursi->createdby = $data->createdby;
 	$kursi->modifiedby = $data->modifiedby;
 	

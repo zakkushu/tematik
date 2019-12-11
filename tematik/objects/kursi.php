@@ -78,7 +78,7 @@ class kursi{
 
     function update(){
 
-        $query = "UPDATE " . $this->table_name . " SET IDD_M=:IDD_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, createdat=:createdat, modifiedby=:modifiedby WHERE ID_K = :ID_K";
+        $query = "UPDATE " . $this->table_name . " SET IDD_M=:IDD_M, ID_K=:ID_K, ID_P=:ID_P, createdby=:createdby, modifiedby=:modifiedby WHERE ID_K = :ID_K";
 
         $stmt = $this->conn->prepare($query);
 
@@ -86,14 +86,12 @@ class kursi{
         $this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
         $this->ID_P=htmlspecialchars(strip_tags($this->ID_P));
         $this->createdby=htmlspecialchars(strip_tags($this->createdby));
-        $this->createdat=htmlspecialchars(strip_tags($this->createdat));
         $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
         $stmt->bindParam(":IDD_M", $this->IDD_M);
         $stmt->bindParam(":ID_K", $this->ID_K);
-        $stmt->bindParam(":ID_P", $this->ID_p);
+        $stmt->bindParam(":ID_P", $this->ID_P);
         $stmt->bindParam(":createdby", $this->createdby);
-        $stmt->bindParam(":createdat", $this->createdat);
         $stmt->bindParam(":modifiedby", $this->modifiedby);
 
         if($stmt->execute()){
@@ -109,9 +107,9 @@ class kursi{
 
         $stmt = $this->conn->prepare($query);
 
-        $this->tname=htmlspecialchars(strip_tags($this->tname));
+        $this->ID_K=htmlspecialchars(strip_tags($this->ID_K));
 
-        $stmt->bindParam(1, $this->tname);
+        $stmt->bindParam(1, $this->ID_K);
 
         if($stmt->execute()){
             return true;
