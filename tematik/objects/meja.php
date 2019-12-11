@@ -49,8 +49,8 @@ class meja{
         $this->modifiedby=htmlspecialchars(strip_tags($this->modifiedby));
 
     
-        $stmt->bindParam(":nama", $this->ID_E);
-        $stmt->bindParam(":nomorhp", $this->ID_M);
+        $stmt->bindParam(":ID_E", $this->ID_E);
+        $stmt->bindParam(":ID_M", $this->ID_M);
         $stmt->bindParam(":tname", $this->tname);
         $stmt->bindParam(":createdby", $this->createdby);
         $stmt->bindParam(":modifiedby", $this->modifiedby);
@@ -91,9 +91,9 @@ class meja{
 
         $stmt = $this->conn->prepare($query);
 
-        $this->tname=htmlspecialchars(strip_tags($this->tname));
+        $this->IDD_M=htmlspecialchars(strip_tags($this->IDD_M));
 
-        $stmt->bindParam(1, $this->tname);
+        $stmt->bindParam(1, $this->IDD_M);
 
         if($stmt->execute()){
             return true;

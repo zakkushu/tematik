@@ -32,7 +32,8 @@ if($num>0){
             "jumlah_m" => $jumlah_m,
             "createdat" => $createdat,
             "createdby" => $createdby,
-            "modifiedby" => $modifiedby
+            "modifiedby" => $modifiedby,
+            "notes" => $notes
         );
  
         array_push($events_arr["records"], $events_item);

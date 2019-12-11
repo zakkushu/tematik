@@ -28,8 +28,8 @@ if($num>0){
             "ID_E" => $ID_E,
             "ID_M" => $ID_M,
             "tname" => $tname,
-            "createdat" => $createdat,
             "createdby" => $createdby,
+            "createdat" => $createdat,
             "modifiedby" => $modifiedby
         );
  

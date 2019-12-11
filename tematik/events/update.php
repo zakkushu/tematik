@@ -23,7 +23,6 @@
 	$events->waktu_e = $data->waktu_e;
 	$events->jumlah_m = $data->jumlah_m;
 	$events->createdby = $data->createdby;
-	$events->createdat = $data->createdat;
 	$events->modifiedby = $data->modifiedby;
 	$events->notes = $data->notes;
 
