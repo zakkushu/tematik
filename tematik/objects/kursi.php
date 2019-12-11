@@ -39,7 +39,8 @@ class kursi{
 
     function readOne(){
 
-        $query = "SELECT * FROM " . $this->table_name . " WHERE IDD_M = ?";
+        $query = "SELECT IDD_M, ID_K, p.ID_P, p.nama, k.createdby, k.createdat, k.modifiedby FROM kursi k INNER JOIN pelanggan p on IDD_M = ? WHERE k.ID_P = p.ID_P
+        ";
 
         $stmt = $this->conn->prepare( $query );
 

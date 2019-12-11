@@ -32,6 +32,7 @@
                 "IDD_M" => $IDD_M,
                 "ID_k" => $ID_K,
                 "ID_P" => $ID_P,
+                "nama" => $nama,
                 "createdat" => $createdat,
                 "createdby" => $createdby,
                 "modifiedby" => $modifiedby

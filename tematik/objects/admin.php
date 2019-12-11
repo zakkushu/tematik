@@ -30,27 +30,6 @@ class Admin{
         return $stmt;
     }
 
-    function ifExist(){
-        $query = "SELECT
-                   *
-                FROM "
-                    .$this->table_name. "WHERE email = ? LIMIT 0,1" ;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->email);
-
-        $stmt->execute();
-
-        $num = $stmt->rowCount();
-
-        if($num>0){
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $this->email = $row['email'];
-            $this->password = $row['password'];
-
-            return true;
-        }
-        return false;
-    }
 
 
     function create(){
