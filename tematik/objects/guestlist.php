@@ -59,7 +59,10 @@
 
 		function readOne(){
 
-			$query = "SELECT * FROM guestlist WHERE ID_E=?";
+			$query = "SELECT g.ID_E, g.IDD_M, m.tname, g.ID_K, g.ID_P, p.nama, kehadiran, raffle, g.createdby, g.createdat, g.modifiedby FROM guestlist g
+				INNER JOIN meja m on m.IDD_M = g.IDD_M
+				INNER JOIN pelanggan p on p.ID_P = g.ID_P
+				WHERE g.ID_E = ?";
 	
 			$stmt = $this->conn->prepare( $query );
 	
