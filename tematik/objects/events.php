@@ -20,7 +20,7 @@
 		}
 
 		function read(){
-			$query = "SELECT * FROM events";
+			$query = "SELECT * FROM events ORDER BY createdat ASC";
 
 			$stmt = $this->conn->prepare($query);
 	        $stmt->execute();
