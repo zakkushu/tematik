@@ -18,7 +18,7 @@ $num = $stmt->rowCount();
 if($num>0){
  
     $guestlist_arr=array();
-    $guestlist_arr["tidak hadir"]=array();
+    $guestlist_arr["records"]=array();
  
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         
@@ -28,7 +28,7 @@ if($num>0){
             "nama" => $nama
         );
  
-        array_push($guestlist_arr["tidak hadir"], $guestlist_item);
+        array_push($guestlist_arr["records"], $guestlist_item);
     }
  
     http_response_code(200);
