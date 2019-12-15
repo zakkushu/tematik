@@ -77,9 +77,10 @@
 		function hadir(){
 			$query = "SELECT p.nama, kehadiran FROM guestlist g
 				INNER JOIN pelanggan p on g.ID_P = p.ID_P
-				WHERE kehadiran = 'ya'";
+				WHERE kehadiran = 'ya' AND ID_E = ?";
 
 			$stmt = $this->conn->prepare($query);
+			$stmt->bindParam(1, $this->ID_E);
 			$stmt->execute();
 			return $stmt;
 		}
@@ -87,9 +88,10 @@
 		function nohadir(){
 			$query = "SELECT p.nama, kehadiran FROM guestlist g
 				INNER JOIN pelanggan p on g.ID_P = p.ID_P
-				WHERE kehadiran = 'tidak'";
+				WHERE kehadiran = 'tidak' AND ID_E = ?";
 
 			$stmt = $this->conn->prepare($query);
+			$stmt->bindParam(1, $this->ID_E);
 			$stmt->execute();
 			return $stmt;
 		}
