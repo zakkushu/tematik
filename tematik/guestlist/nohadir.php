@@ -9,6 +9,7 @@ $database = new Database();
 $db = $database->getConnection();
  
 $guestlist = new guestlist($db);
+$guestlist->ID_E = isset($_GET['ID_E']) ? $_GET['ID_E'] : die();
  
 
 $stmt = $guestlist->nohadir();
